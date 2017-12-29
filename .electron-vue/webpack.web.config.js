@@ -66,7 +66,13 @@ let webConfig = {
             name: 'fonts/[name].[ext]'
           }
         }
-      }
+      },
+      {
+        test: /\.scss$/,
+        use: {
+          loader: 'sass-loader'
+        }
+      }      
     ]
   },
   plugins: [

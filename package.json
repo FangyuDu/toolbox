@@ -51,8 +51,14 @@
     }
   },
   "dependencies": {
-    "vue": "^2.3.3",
     "axios": "^0.16.1",
+    "element-ui": "^2.0.9",
+    "fs-extra": "^5.0.0",
+    "lowdb": "^1.0.0",
+    "node-sass": "^4.7.2",
+    "pug": "^2.0.0-rc.4",
+    "sass-loader": "^6.0.6",
+    "vue": "^2.3.3",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
     "vuex": "^2.3.1"

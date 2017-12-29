@@ -44,6 +44,8 @@ app.on('activate', () => {
   }
 })
 
+require('./demo2')
+require('./demo3')
 /**
  * Auto Updater
  *
