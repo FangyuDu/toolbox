@@ -8,6 +8,7 @@
     .control-pane
       el-button(@click="getTasks") 查询数据
       el-button(@click="addTask") 添加数据
+      el-button(@click="clearTask") 清空数据
     el-table(:data="tasks" style="width: 800px")
       el-table-column(prop="id" label="id")
       el-table-column(prop="title" label="标题")
@@ -56,14 +57,25 @@ export default {
       console.log(config)
     },
     addTask() {
-      ipcRenderer.send('addTask')
+      ipcRenderer.send('addTask', {})
+      ipcRenderer.once('addTask', () => {
+        console.log('xxx')
+        this.getTasks()
+      })
     },
     getTasks() {
       let value = ipcRenderer.sendSync('getTask')
       this.tasks = value
+    },
+    clearTask() {
+      ipcRenderer.send('clearTask')
+      ipcRenderer.once('clearTask', (e, v) => {
+        this.getTasks()
+      })
     }
   },
   created() {
+    this.getTasks()
     ipcRenderer.on('createConfig', (e, v) => {
       if (v.success) {
         this.$message({

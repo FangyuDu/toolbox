@@ -5,6 +5,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import low from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
+import shortId from 'shortid'
 
 /* ------------------- 直接文件读取结束 ------------------- */
 ipcMain.on('checkConfig', (e, v) => {
@@ -54,18 +55,32 @@ if (!isExistDb) {
 ipcMain.on('addTask', (e, v) => {
   db.get('tasks')
   .push({
-    id: 1, 
+    id: shortId.generate(), 
     title: '新的任务',
     createDate: new Date().getTime(),
     state: '未开始'
+  }).write()
+  e.sender.send('addTask', {
+    success: true,
+    message: '数据已添加'
   })
-  .write()
-  let x = db.get('tasks')
-    .value()
-  console.log('数据', x)  
 })
 
 ipcMain.on('getTask', (e, v) => {
   e.returnValue = db.get('tasks').value()
+})
+
+ipcMain.on('clearTask', (e) => {
+  try {
+    db.get('tasks')
+      .remove()
+      .write()
+  } catch (err) {
+    throw err
+  }
+  e.sender.send('clearTask', {
+    success: true,
+    message: '清除成功！'
+  })
 })
 /* ------------------- 数据库读取操作结束 ------------------- */
