@@ -18,6 +18,10 @@ export default new Router({
       name: 'demo3',
       component: require('@/modules/demo3').default
     }, {
+      path: '/eTask',
+      name: 'eTask',
+      component: require('@/modules/etask').default
+    }, {      
       path: '*',
       redirect: '/'
     }

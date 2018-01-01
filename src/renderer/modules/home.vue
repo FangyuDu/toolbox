@@ -17,7 +17,7 @@ export default {
           path: 'demo3'
         }, {
           name: '2-3 简单项目：任务管理',
-          path: 'taskAdmin'
+          path: 'eTask'
         }, {
           name: '未解锁项目',
           path: 'demo3'
@@ -46,11 +46,11 @@ export default {
 <style lang="scss" scoped>
   .desk {
     height: 100%;
-    padding: 10px;
+    padding: 3px;
     background-color: #f2f2f2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 3px;
     grid-auto-rows: minmax(100px, auto);
   }
   .app-item {
@@ -59,11 +59,12 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: solid 1px transparent;
-    transition: all .3s linear;
+    outline: solid 0 transparent;
+    transition: all .2s ease-in;
+    font-size: 24px;
     cursor: pointer;
     &:hover {
-      outline: solid 5px rgb(116, 107, 252);
+      outline: solid 2px rgb(116, 107, 252);
     }
   }
 </style>
