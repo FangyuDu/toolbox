@@ -47,6 +47,7 @@ app.on('activate', () => {
 
 require('./demo2')
 require('./demo3')
+require('./etask')
 /**
  * Auto Updater
  *

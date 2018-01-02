@@ -21,13 +21,18 @@ export default {
   },
   methods: {
     quickSave() {
-      this.$message({
-        message: this.title,
-        type: 'success'
+      ipcRenderer.send('etaskAddTask', {
+        title: this.title
       })
-      // this.$alert('已保存成功', '成功')
-      ipcRenderer.send('m', this.title)
-      let x = ipcRenderer.sendSync('getTasklist', '')
+      ipcRenderer.once('etaskAddTask', (e, v) => {
+        console.log(v)
+        this.getTasks()
+      })
+    },
+    getTasks() {
+      console.log('开始')
+      let x = ipcRenderer.sendSync('etaskGetTasks', '')
+      console.log(x)
       this.title = ''
       this.$emit('saved')
     },

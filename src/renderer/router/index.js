@@ -20,7 +20,11 @@ export default new Router({
     }, {
       path: '/eTask',
       name: 'eTask',
-      component: require('@/modules/etask').default
+      component: require('@/modules/etask').default,
+      children: [{
+        path: 'projectList',
+        component: require('@/modules/etask/pages/projectList').default
+      }]
     }, {      
       path: '*',
       redirect: '/'

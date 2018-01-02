@@ -20,13 +20,14 @@
           .pro-item 
             p.pro-name.is-active 工作台
           .pro-item
-            p.pro-name 我的项目
+            router-link(to="/etask/projectList" tag="p").pro-name 我的项目
             .pro-list
               projectName(v-for="(x, index) in projects" :key="`p-${index}`" :title="x.name")
           .pro-item
             p.pro-name.border-line 创建项目
         .pl-main
-          taskList(ref="list")
+          router-view
+            taskList(ref="list")
     addTask(@saved="update")
 </template>
 <script>
