@@ -35,6 +35,7 @@ ipcMain.on('etaskAddTask', (e, v) => {
     state: '未开始'
   }
   v instanceof Object && Object.assign(_init, {})
+  console.log(_init)
   db.get('tasks')
     .push(_init)
     .write()

@@ -18,7 +18,7 @@
           .pro-item 
             router-link(to="/desk" tag="p").pro-name 首页
           .pro-item 
-            p.pro-name.is-active 工作台
+            router-link(to="/etask/taskWall" tag="p").pro-name 任务墙
           .pro-item
             router-link(to="/etask/projectList" tag="p").pro-name 我的项目
             .pro-list
@@ -27,7 +27,6 @@
             p.pro-name.border-line 创建项目
         .pl-main
           router-view
-            taskList(ref="list")
     addTask(@saved="update")
 </template>
 <script>

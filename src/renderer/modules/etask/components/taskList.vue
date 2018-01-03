@@ -1,7 +1,7 @@
 <template lang="pug">
   .task-list
     .task-item(v-for="(item, index) in taskList", :key="'task-'+index")
-      p {{item.name}}
+      p {{item.title}}
 </template>
 <script>
 import {ipcRenderer} from 'electron'
@@ -14,11 +14,11 @@ export default {
   },
   methods: {
     update() {
-      this.taskList = ipcRenderer.sendSync('getTasklist', '')
+      this.taskList = ipcRenderer.sendSync('etaskGetTasks', '')
     }
   },
   created() {
-    // this.update()
+    this.update()
   }
 }
 </script>

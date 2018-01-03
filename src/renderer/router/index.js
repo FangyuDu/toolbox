@@ -22,6 +22,9 @@ export default new Router({
       name: 'eTask',
       component: require('@/modules/etask').default,
       children: [{
+        path: 'taskwall',
+        component: require('@/modules/etask/pages/taskWall').default
+      }, {
         path: 'projectList',
         component: require('@/modules/etask/pages/projectList').default
       }]
