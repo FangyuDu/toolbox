@@ -27,6 +27,12 @@ export default new Router({
       }, {
         path: 'projectList',
         component: require('@/modules/etask/pages/projectList').default
+      }, {
+        path: 'taskList',
+        component: require('@/modules/etask/pages/projectList').default
+      }, {
+        path: 'taskDetail/:id',
+        component: require('@/modules/etask/pages/projectList').default
       }]
     }, {      
       path: '*',

@@ -22,7 +22,6 @@ if (!isExistDb) {
 // 获取任务内容
 ipcMain.on('etaskGetTasks', (e, v) => {
   let x = db.get('tasks').value()
-  console.log(x)
   e.returnValue = x
 })
 
@@ -34,8 +33,7 @@ ipcMain.on('etaskAddTask', (e, v) => {
     creatTime: new Date().getTime(),
     state: '未开始'
   }
-  v instanceof Object && Object.assign(_init, {})
-  console.log(_init)
+  v instanceof Object && Object.assign(_init, v)
   db.get('tasks')
     .push(_init)
     .write()

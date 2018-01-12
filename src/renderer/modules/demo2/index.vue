@@ -23,6 +23,9 @@ export default {
       console.log('开始创建文件')
       let fileName = `file-${new Date().getTime()}.txt`
       ipcRenderer.send('createFile', fileName)
+      ipcRenderer.once('msg', () => {
+        console.log('测试')
+      })
     }
   }
 }
